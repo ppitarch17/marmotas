@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -240,27 +240,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.2957628
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0000031664144
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -3.763034e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 3.8690183e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3451622138607364495, guid: a0ad1ec057da5f845b884b19900f81a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -542,7 +542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.6, z: -16.2}
+  m_LocalPosition: {x: 0, y: 7.5, z: -23.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 1048206926}
   - component: {fileID: 1048206925}
   - component: {fileID: 1048206924}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 2136714550}
   - component: {fileID: 2136714549}
   - component: {fileID: 2136714548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136714547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07629597, y: 41.8, z: -1.8339145}
+  m_LocalPosition: {x: 0.07629597, y: 14.1, z: -1.8339145}
   m_LocalScale: {x: 15.928968, y: 0.3284789, z: 11.569475}
   m_Children: []
   m_Father: {fileID: 0}

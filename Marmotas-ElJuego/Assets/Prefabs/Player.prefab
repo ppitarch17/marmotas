@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd21367272879954f913d179253b43da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeInterrupted: 1
 --- !u!1 &1023207270
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,12 +853,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityController: {fileID: 5785111810722124917}
+  playerAnimatorController: {fileID: 5532996298216600704}
   Speed: 5
   _isGrounded: 0
   checkGroundBoxSize: {x: 0.5, y: 0.1, z: 0.6}
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
 --- !u!1 &5785111810722124907
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +920,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 3451622138607364489}
+  playerAnimatorController: {fileID: 5532996298216600704}
   gravityForce: 9.8
   timeBeforeStartingRotation: 0.5
   rotationDuration: 0.5
   isRotating: 0
+  lastDirection: 1
