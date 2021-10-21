@@ -25,27 +25,63 @@ public class GravityController : MonoBehaviour
         if(!playerController._isGrounded)
             return;
 
-        if(Input.GetKeyDown(KeyCode.UpArrow)) {
+        if(Input.GetKeyDown(KeyCode.UpArrow)) { //Va a techo
             ChangeGravity(Direction.Up);
-            StartCoroutine(RotateObject(gameObject, new Vector3(0, 0, -180f), rotationDuration, Direction.Up));
+
+            if(lastDirection == Direction.Down){
+                StartCoroutine(RotateObject(gameObject, new Vector3(0, 0, -180), rotationDuration, Direction.Up));
+            }else if(lastDirection == Direction.Right){
+                StartCoroutine(RotateObject(gameObject, new Vector3(90, 0, -180), rotationDuration, Direction.Up));
+            }else if(lastDirection == Direction.Left){
+                StartCoroutine(RotateObject(gameObject, new Vector3(-90, 0, -180), rotationDuration, Direction.Up));
+            }
+
             lastDirection = Direction.Up;
         }
             
-        if(Input.GetKeyDown(KeyCode.DownArrow)) {
+        if(Input.GetKeyDown(KeyCode.DownArrow)) { //Va a piso
             ChangeGravity(Direction.Down);
-            StartCoroutine(RotateObject(gameObject, new Vector3(0, 0, 180), rotationDuration, Direction.Down));
+
+            if(lastDirection == Direction.Up){
+                StartCoroutine(RotateObject(gameObject, new Vector3(0, 0, 180), rotationDuration, Direction.Down));
+            }else if(lastDirection == Direction.Right){
+                StartCoroutine(RotateObject(gameObject, new Vector3(-90, 0, 0), rotationDuration, Direction.Down));
+            }else if(lastDirection == Direction.Left){
+                StartCoroutine(RotateObject(gameObject, new Vector3(90, 0, 0), rotationDuration, Direction.Down));
+            }
+            
             lastDirection = Direction.Down;
         }
             
-        // if(Input.GetKeyDown(KeyCode.LeftArrow)){
-        //     ChangeGravity(Direction.Left);
-        //     //StartCoroutine(RotatePlayer(Direction.Left, rotationDuration));
-        // }
-        //     
-        // if(Input.GetKeyDown(KeyCode.RightArrow)){
-        //     ChangeGravity(Direction.Right);
-        //     //StartCoroutine(RotatePlayer(Direction.Right, rotationDuration));
-        // }
+        if(Input.GetKeyDown(KeyCode.LeftArrow)){ // Va a pared izq
+            ChangeGravity(Direction.Left);
+            
+            if(lastDirection == Direction.Up){
+                StartCoroutine(RotateObject(gameObject, new Vector3(90, 0, 180), rotationDuration, Direction.Left));
+            }else if(lastDirection == Direction.Down){
+                StartCoroutine(RotateObject(gameObject, new Vector3(-90, 0, 0), rotationDuration, Direction.Left));
+            }else if(lastDirection == Direction.Right){
+                StartCoroutine(RotateObject(gameObject, new Vector3(-180, 0, 0), rotationDuration, Direction.Left));
+            }
+            
+            lastDirection = Direction.Left;
+            //StartCoroutine(RotatePlayer(Direction.Left, rotationDuration));
+        }
+         
+        if(Input.GetKeyDown(KeyCode.RightArrow)){ // Va a pared der
+            ChangeGravity(Direction.Right);
+            
+            if(lastDirection == Direction.Up){
+                StartCoroutine(RotateObject(gameObject, new Vector3(90, 0, 180), rotationDuration, Direction.Right));
+            }else if(lastDirection == Direction.Down){
+                StartCoroutine(RotateObject(gameObject, new Vector3(90, 0, 0), rotationDuration, Direction.Right));
+            }else if(lastDirection == Direction.Left){
+                StartCoroutine(RotateObject(gameObject, new Vector3(180, 0, 0), rotationDuration, Direction.Right));
+            }
+            
+
+            lastDirection = Direction.Right;
+        }
             
 
 
@@ -89,5 +125,9 @@ public class GravityController : MonoBehaviour
             yield return null;
         }
         isRotating = false;
+    }
+
+    private void resetRotation(Direction direction){
+        StartCoroutine(RotateObject(gameObject, Vector3.zero, rotationDuration, direction));
     }
 }

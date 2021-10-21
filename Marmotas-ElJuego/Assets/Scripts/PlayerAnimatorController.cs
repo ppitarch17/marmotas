@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerAnimatorController : MonoBehaviour
 {
+    private PlayerController playerController;
+    private GravityController gravityController;
+
     private static Animator _animator;
     public bool canBeInterrupted = true;
     
@@ -17,10 +20,22 @@ public class PlayerAnimatorController : MonoBehaviour
         Jump1Normal,
         Jump2Landing,
     }
+
     
     void Start() {
         _animator = gameObject.GetComponent<Animator>();
+        playerController = gameObject.GetComponentInParent<PlayerController>();
+        gravityController = gameObject.GetComponentInParent<GravityController>();
     }
+
+/*     void Update(){
+        if(playerController._isWalking){
+            ChangeAnimation(PlayerAnimatorController.AnimationName.Run, 0.1f, true);
+        }else if(playerController._isIdle){
+            ChangeAnimation(PlayerAnimatorController.AnimationName.Idle, 0.1f, true);
+        }
+
+    } */
 
     public void ChangeAnimation(AnimationName name, float transitionTime, bool canBeInterrupted){
 
