@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool _isWalking;
     public bool _isIdle;
     //public Transform _groundChecker;
-    //public float GroundDistance = 0.2f;
+    public float GroundDistance = 0.2f;
     public Vector3 checkGroundBoxSize = Vector3.one / 2;
     public LayerMask GroundLayer;
 
@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //_isGrounded = Physics.CheckSphere(transform.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
-        _isGrounded = Physics.CheckBox(transform.position, checkGroundBoxSize, Quaternion.identity, GroundLayer, QueryTriggerInteraction.Ignore);
+        _isGrounded = Physics.CheckSphere(transform.position, GroundDistance, GroundLayer, QueryTriggerInteraction.Ignore);
+        //_isGrounded = Physics.CheckBox(transform.position, checkGroundBoxSize, Quaternion.identity, GroundLayer, QueryTriggerInteraction.Ignore);
 
         _inputs = HandleInputDependingOnDirection();
 
