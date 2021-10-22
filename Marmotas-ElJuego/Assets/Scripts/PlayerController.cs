@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //TODO cambiar controles
     void Update()
     {
         _isGrounded = Physics.CheckSphere(transform.position, GroundDistance, GroundLayer, QueryTriggerInteraction.Ignore);
@@ -88,12 +89,15 @@ public class PlayerController : MonoBehaviour
         {
 
             //En pared derecha
-            _inputs.y = Input.GetAxis("Horizontal");
-            _inputs.z = Input.GetAxis("Vertical");
+/*             _inputs.y = Input.GetAxis("Horizontal");
+            _inputs.z = Input.GetAxis("Vertical"); */
+
+            _inputs.y = Input.GetAxis("Vertical");
+            _inputs.z = Input.GetAxis("Horizontal");
 
             //En pared izquierda
-            if (gravityController.lastDirection == GravityController.Direction.Left)
-                _inputs.y = -_inputs.y;
+            if (gravityController.lastDirection == GravityController.Direction.Right)
+                _inputs.z = -_inputs.z;
 
             Debug.Log("HandleInput : en paredes");
         }

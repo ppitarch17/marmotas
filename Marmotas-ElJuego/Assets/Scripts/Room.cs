@@ -6,6 +6,7 @@ public class Room  : MonoBehaviour
 {
 
     public GameObject vCam;
+    public BoxCollider cameraBox;
 
     private void OnTriggerEnter(Collider other) 
     {
