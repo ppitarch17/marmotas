@@ -23,6 +23,7 @@ public class GravityController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //El jugador solo puede cambiar la gravedad cuando esta grounded
         if (!playerController._isGrounded)
             return;
 
@@ -116,6 +117,8 @@ public class GravityController : MonoBehaviour
 
     }
 
+    // Cambiamos la gravedad modificandola directamente en Physics
+    // Asi objetos del entorno tambien se ven afectados
     public void ChangeGravity(Direction direction)
     {
 
@@ -132,6 +135,11 @@ public class GravityController : MonoBehaviour
         };
 
         playerAnimatorController.ChangeAnimation(PlayerAnimatorController.AnimationName.Jump1Normal, 0.1f, false);
+        //lastDirection = direction;
+    }
+
+    public void setLastDirection(Direction direction){
+        lastDirection = direction;
     }
     IEnumerator RotateObject(GameObject gameObjectToMove, Vector3 eulerAngles, float duration, Direction direction)
     {
@@ -141,7 +149,7 @@ public class GravityController : MonoBehaviour
         }
 
         isRotating = true;
-        //Debug.Log("inside with: " + eulerAngles);
+
         yield return new WaitForSeconds(timeBeforeStartingRotation);
 
         Vector3 newRot = gameObjectToMove.transform.eulerAngles + eulerAngles;
@@ -158,11 +166,15 @@ public class GravityController : MonoBehaviour
         isRotating = false;
     }
 
-    private void resetRotation(Direction direction)
+    public void SetRotation(Quaternion newRotation)
     {
-        StartCoroutine(RotateObject(gameObject, Vector3.zero, rotationDuration, direction));
+        //Kill corutine?
+        transform.rotation = newRotation;
+        print("Rotation set to: " + transform.rotation);
     }
 
+    // Rota al jugador para quede de pie independientemente de la gravedad
+    // Piso: (0,0,0) | Techo: (0,0,180) | Derecha: (90,0,0) | Izquierda: (-90,0,0)
     IEnumerator RotatePlayer(Direction direction, float duration){
 
         if (isRotating || lastDirection == direction){
@@ -173,17 +185,13 @@ public class GravityController : MonoBehaviour
 
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = startRotation;
-        Vector3 endRotationVector = -transform.rotation.eulerAngles;
-        Debug.Log("start: " + startRotation + "| endvector: " + endRotationVector);
         switch (direction)
         {
             case Direction.Up:
                 endRotation = Quaternion.Euler(new Vector3(0, -90f, -180f));
-                //endRotationVector = new Vector3(0, 0, -180f);
                 break;
             case Direction.Down:
                 endRotation = Quaternion.Euler(new Vector3(0, -90f, 0));
-                //endRotationVector = new Vector3(0, 0, 0);
                 break;
             case Direction.Left:
                 endRotation = Quaternion.Euler(new Vector3(-90f, -90f, 0));
@@ -199,7 +207,6 @@ public class GravityController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, t / duration);
 
             yield return null;
-            Debug.Log("dentro");
         }
 
     }

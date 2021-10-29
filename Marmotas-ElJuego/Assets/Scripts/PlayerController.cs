@@ -36,45 +36,27 @@ public class PlayerController : MonoBehaviour
 
         _inputs = HandleInputDependingOnDirection();
 
+        if (_inputs != Vector3.zero && !gravityController.isRotating){
 
-        if (_inputs != Vector3.zero && !gravityController.isRotating)
-        {
-
-            //transform.forward = _inputs;
-
-            transformRotation.localRotation = HandleRotationDependingOnDirection();
+            transformRotation.localRotation = HandleRotationDependingOnDirection(); //Rotamos el modelo del jugador
 
             if (_isGrounded)
-            {
-                /*  _isWalking = true;
-                 _isIdle = false; */
                 playerAnimatorController.ChangeAnimation(PlayerAnimatorController.AnimationName.Run, 0.1f, true);
-            }
-
+            
         }
-        else if (_inputs == Vector3.zero)
-        {
+        else if (_inputs == Vector3.zero){
             if (_isGrounded)
-            {
-                /*                 _isWalking = false;
-                                _isIdle = true; */
                 playerAnimatorController.ChangeAnimation(PlayerAnimatorController.AnimationName.Idle, 0.1f, true);
-            }
-
         }
 
     }
 
-    void FixedUpdate()
-    {
-        //if(_isGrounded  && !gravityController.isRotating){
-        //if(!gravityController.isRotating){
+    void FixedUpdate(){
         _body.MovePosition(_body.position + _inputs * Speed * Time.fixedDeltaTime);
-        //_body.rotation = 
-        //}
     }
 
 
+    //Se utilizan diferentes teclas dependiendo de si el jugador esta en las paredes o el piso/techo
     private Vector3 HandleInputDependingOnDirection()
     {
         Vector3 _inputs = Vector3.zero;
@@ -86,28 +68,23 @@ public class PlayerController : MonoBehaviour
             _inputs.z = Input.GetAxis("Vertical");
         }
         else
-        {
-
-            //En pared derecha
-/*             _inputs.y = Input.GetAxis("Horizontal");
-            _inputs.z = Input.GetAxis("Vertical"); */
-
+        {   //En pared Izquierda
             _inputs.y = Input.GetAxis("Vertical");
             _inputs.z = Input.GetAxis("Horizontal");
 
-            //En pared izquierda
+            //En pared Derecha
             if (gravityController.lastDirection == GravityController.Direction.Right)
                 _inputs.z = -_inputs.z;
 
-            Debug.Log("HandleInput : en paredes");
         }
 
         return _inputs;
     }
 
+    //la rotacion del jugador depende de su posicion
     private Quaternion HandleRotationDependingOnDirection()
     {
-        Vector3 _rotation = new Vector3(_inputs.z, 0, -_inputs.x);
+        Vector3 _rotation = new Vector3(_inputs.z, 0, -_inputs.x); //Direction.Down
 
         switch (gravityController.lastDirection)
         {
@@ -115,22 +92,20 @@ public class PlayerController : MonoBehaviour
             case GravityController.Direction.Right: _rotation.z = -_inputs.y; break;
             case GravityController.Direction.Left: _rotation.z = _inputs.y; break;
         }
-        /*         if(gravityController.lastDirection == GravityController.Direction.Up){
-                    _rotation.x = -_inputs.z;
-                } else if(gravityController.lastDirection == GravityController.Direction.Right){
-                    _rotation.z = -_inputs.y;
-                } else if(gravityController.lastDirection == GravityController.Direction.Left){
-                    _rotation.z = _inputs.y;
-                } */
 
         return Quaternion.LookRotation(_rotation);
     }
 
+    //Para ver la zona de isGrounded
     void OnDrawGizmosSelected()
     {
-        //Gizmos.DrawSphere(transform.position, GroundDistance);
-        Gizmos.DrawCube(transform.position, checkGroundBoxSize);
+        Gizmos.DrawSphere(transform.position, GroundDistance);
+        //Gizmos.DrawCube(transform.position, checkGroundBoxSize);
         Gizmos.color = Color.red;
+    }
+
+    public void resetRigidBodyVelocity(){
+        _body.velocity = Vector3.zero;
     }
 
 }
