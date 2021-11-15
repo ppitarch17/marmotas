@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8003313034808084319}
+  - component: {fileID: 56250437}
+  - component: {fileID: 56250438}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -23,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7231279488964566501}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -1.66, z: -3.08}
   m_LocalScale: {x: 3.5469, y: 3.5469, z: 3.5469}
   m_Children:
@@ -31,6 +33,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &56250437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231279488964566501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dd50a52fa96aa408844513842713a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyAfterTriggerEnter: 0
+--- !u!65 &56250438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231279488964566501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.82683516, y: 0.22473495, z: 0.79187196}
+  m_Center: {x: -0.01775109, y: 0.07039359, z: 0.023976564}
 --- !u!1 &8392453956749906954
 GameObject:
   m_ObjectHideFlags: 0

@@ -158,9 +158,11 @@ public class GravityController : MonoBehaviour
         isRotating = false;
     }
 
-    private void resetRotation(Direction direction)
+    public void resetRotation()
     {
-        StartCoroutine(RotateObject(gameObject, Vector3.zero, rotationDuration, direction));
+        //StartCoroutine(RotateObject(gameObject, Vector3.zero, rotationDuration, Direction.Down));
+        transform.rotation = Quaternion.Euler(new Vector3(0, -90f, 0f));
+        lastDirection = Direction.Down;
     }
 
     IEnumerator RotatePlayer(Direction direction, float duration){

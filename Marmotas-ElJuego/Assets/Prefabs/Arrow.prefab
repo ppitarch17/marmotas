@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 685477578}
   - component: {fileID: 4778133085963154751}
   - component: {fileID: 6149400788118718113}
-  - component: {fileID: 6149400788118718114}
+  - component: {fileID: 5866471377044850135}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -163,7 +163,7 @@ MonoBehaviour:
   rb: {fileID: 685477578}
   DestoyAfter: 10
   initialForce: 10
---- !u!114 &6149400788118718114
+--- !u!114 &5866471377044850135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6149400788118718116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908ff5c729035ff4191556d4137ecb9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 79dd50a52fa96aa408844513842713a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfterTriggerEnter: 1

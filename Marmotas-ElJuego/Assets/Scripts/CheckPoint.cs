@@ -9,9 +9,14 @@ public class CheckPoint : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if(other.CompareTag("Player")){
             print("Jugador paso por checkpoint " + this.gameObject.name);
-            LoseGame.UpdateLastCheckPoint(transform.position, this);
+            LoseGame.UpdateLastCheckPoint(this);
         }
         
+    }
+
+    //TODO correct z axis??
+    public Vector3 GetPosition(){
+        return new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     public void TurnCheckPointLightOn(){
