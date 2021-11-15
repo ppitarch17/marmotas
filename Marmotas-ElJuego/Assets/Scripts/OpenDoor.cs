@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    public BoxCollider cameraBox;
+/*     public BoxCollider cameraBox;
     public Transform transformRotation;
     public Animator animator;
 
@@ -27,5 +27,5 @@ public class OpenDoor : MonoBehaviour
             transformRotation.rotation(y, 0);
 
         }
-    }
+    } */
 }

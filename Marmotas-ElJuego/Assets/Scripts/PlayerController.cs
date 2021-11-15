@@ -133,4 +133,12 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
     }
 
+    public void resetRigidBodyVelocity(){
+        //_body.velocity = Vector3.zero;
+
+        // Dejo solo la velocidad en y para que el jugador no quede flotando si se resetea la velocidad en el aire
+        // (AKA cuando hace spawn en un checkpoint)
+        _body.velocity = new Vector3(0, _body.velocity.y, 0);
+    }
+
 }
