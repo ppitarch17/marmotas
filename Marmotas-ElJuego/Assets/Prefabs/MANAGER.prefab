@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8234649873145325444}
   - component: {fileID: 8234649873145325447}
+  - component: {fileID: 433218029}
   m_Layer: 0
   m_Name: Win&Lose
   m_TagString: Untagged
@@ -43,6 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1005695175392ca429dcececf6e7d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &433218029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234649873145325445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7659253a6a71bf4c8b0a5497abc69d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbsNedded: 3
+  orbsFound: 0
 --- !u!1 &8234649874201692101
 GameObject:
   m_ObjectHideFlags: 0

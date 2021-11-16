@@ -93,9 +93,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6149400788118718115}
+  - component: {fileID: 685477578}
+  - component: {fileID: 4778133085963154751}
   - component: {fileID: 6149400788118718113}
-  - component: {fileID: 6149400788118718114}
-  - component: {fileID: 6149400788118718112}
+  - component: {fileID: 5866471377044850135}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -118,6 +119,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &685477578
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149400788118718116}
+  serializedVersion: 2
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &4778133085963154751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149400788118718116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37920514, y: 0.47595072, z: 1.2847325}
+  m_Center: {x: -0.11142222, y: -0.023060799, z: -0.023421941}
 --- !u!114 &6149400788118718113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,10 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421ffe2e538d8c648ac25302dd70d3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestoyAfter: 5
-  velocity: 0.3
-  timer: 0
---- !u!114 &6149400788118718114
+  rb: {fileID: 685477578}
+  DestoyAfter: 10
+  initialForce: 10
+--- !u!114 &5866471377044850135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,19 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6149400788118718116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 908ff5c729035ff4191556d4137ecb9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 79dd50a52fa96aa408844513842713a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &6149400788118718112
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6149400788118718116}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24926989, y: 0.19850397, z: 1.2847325}
-  m_Center: {x: -0.1247176, y: -0.028114915, z: -0.023421941}
+  destroyAfterTriggerEnter: 1
