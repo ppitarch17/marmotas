@@ -8,17 +8,24 @@ public class LoseGame : MonoBehaviour
     static GravityController gravityController;
     static Rigidbody playerRigidBody;
     static CheckPoint lastCheckPoint;
+    static Vector3 posIni;
 
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         gravityController = player.GetComponentInChildren<GravityController>();
         playerRigidBody = player.GetComponent<Rigidbody>();
+        posIni = player.transform.position;
     }
     public static void KillPlayer(){
         //Cambiar pos del jugador
-        player.transform.position = lastCheckPoint.GetPosition();
-
+        if (lastCheckPoint != null) {
+            player.transform.position = lastCheckPoint.GetPosition();
+        }
+        else {
+            player.transform.position = posIni;
+        }
+        
         //Cambiar la gravedad Down
         gravityController.ChangeGravity(GravityController.Direction.Down);
         gravityController.resetRotation();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour {
 
     public bool openclosed;
+    public bool canBeOpened = false;
     public float angle;
 
     private Quaternion DoorOpen;
@@ -29,6 +30,9 @@ public class OpenDoor : MonoBehaviour {
 
     private void Update()
     {
+        if (!canBeOpened)
+            return;
+        
         if (Input.GetKeyDown(KeyCode.E) && InDistance == true && openclosed == false)
         {
             openclosed = true;
@@ -42,6 +46,11 @@ public class OpenDoor : MonoBehaviour {
         }
 
 
+    }
+
+    public void setCanBeOpened()
+    {
+        canBeOpened = true;
     }
 
 
