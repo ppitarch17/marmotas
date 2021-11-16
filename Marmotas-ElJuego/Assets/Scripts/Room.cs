@@ -7,12 +7,15 @@ public class Room  : MonoBehaviour
 
     public GameObject vCam;
     public BoxCollider cameraBox;
+    public Rigidbody? rb = null;
 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player") && !other.isTrigger)
         {
             vCam.SetActive(true);
+            if (rb != null)
+                rb.useGravity = true;
         }
     }
 
@@ -21,6 +24,9 @@ public class Room  : MonoBehaviour
         if(other.CompareTag("Player") && !other.isTrigger)
         {
             vCam.SetActive(false);
+            if  (rb != null)
+
+            rb.useGravity = false;
         }
     }
 }
