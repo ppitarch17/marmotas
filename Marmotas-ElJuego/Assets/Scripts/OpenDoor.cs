@@ -2,30 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
-{
-    public BoxCollider cameraBox;
-    public Transform transformRotation;
-    public Animator animator;
+public class OpenDoor : MonoBehaviour {
 
-    void Start() {
-        animator = GetComponent<Animator>();
-    }
+    public bool openclosed;
+    public float angle;
 
-    private void OnTriggerEnter(Collider other) 
+    private Quaternion DoorOpen;
+    private Quaternion DoorClosed;
+
+    public bool InDistance;
+
+    private void Start()
     {
-        if(other.CompareTag("Player") && !other.isTrigger)
-        {
-            transformRotation.rotation(y, -90);
-        }
+
+        openclosed = false;
     }
 
-    private void OnTriggerExit(Collider other) 
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !other.isTrigger)
-        {
-            transformRotation.rotation(y, 0);
-
-        }
+        InDistance = true;
     }
+    private void OnTriggerExit(Collider other)
+    {
+        InDistance = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && InDistance == true && openclosed == false)
+        {
+            openclosed = true;
+            transform.Rotate(0, 0, angle);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.E) && openclosed == true && InDistance == true)
+        {
+            openclosed = false;
+            transform.Rotate(0, 0, -angle);
+        }
+
+
+    }
+
+
+
+
+
+
 }
