@@ -21,6 +21,14 @@ public class LoseGame : MonoBehaviour
         playerRigidBody = player.GetComponent<Rigidbody>();
         posIni = player.transform.position;
     }
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.R)){
+            KillPlayer();
+        }
+
+    }
+
     public static void KillPlayer(){
         //Cambiar pos del jugador
         if (lastCheckPoint != null) {
