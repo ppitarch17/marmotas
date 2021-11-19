@@ -12,6 +12,9 @@ public class GravityController : MonoBehaviour
     public bool isRotating;
     public Direction lastDirection = Direction.Down;
 
+    public bool inCoolDown = false;
+    private float timer;
+
     public enum Direction
     {
         Up,
@@ -25,6 +28,13 @@ public class GravityController : MonoBehaviour
     {
         if (!playerController._isGrounded)
             return;
+
+        if(inCoolDown){
+            if(timer <= 0)
+                inCoolDown = false;
+            timer -= Time.deltaTime;
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         { //Va a techo
@@ -161,7 +171,10 @@ public class GravityController : MonoBehaviour
     public void resetRotation()
     {
         //StartCoroutine(RotateObject(gameObject, Vector3.zero, rotationDuration, Direction.Down));
-        transform.rotation = Quaternion.Euler(new Vector3(0, -90f, 0f));
+        // transform.parent.rotation = Quaternion.Euler(new Vector3(0, -90f, 0));
+        transform.rotation = Quaternion.Euler(new Vector3(0, -90f, 0));
+        // transform.rotation = Quaternion.Euler(new Vector3(-transform.rotation.x, -90f, 0));
+        // transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0, 0f, 0));
         lastDirection = Direction.Down;
     }
 
@@ -204,5 +217,11 @@ public class GravityController : MonoBehaviour
             Debug.Log("dentro");
         }
 
+    }
+
+    
+    public void setGravityColdDown(float coldown){
+        timer = coldown;
+        inCoolDown = true;
     }
 }
