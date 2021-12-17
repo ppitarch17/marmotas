@@ -11,6 +11,6 @@ public class Orb : MonoBehaviour
          if(collision.gameObject.CompareTag("Player")){
             pillarAsociated.SetPillarOn();
             Destroy(gameObject);
-        }
+         }
     }
 }
