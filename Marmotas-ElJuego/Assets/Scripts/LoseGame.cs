@@ -12,7 +12,8 @@ public class LoseGame : MonoBehaviour
     static Vector3 posIni;
 
     static float loseCoolDown = 0.5f;
-
+    public GameObject I_playerPrefab;
+    static GameObject playerPrefab;
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -20,11 +21,13 @@ public class LoseGame : MonoBehaviour
         playerController = player.GetComponentInChildren<PlayerController>();
         playerRigidBody = player.GetComponent<Rigidbody>();
         posIni = player.transform.position;
+        playerPrefab = I_playerPrefab;
     }
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.R)){
-            KillPlayer();
+            //KillPlayer();
+            KillPlayerByPrefab();
         }
 
     }
@@ -47,6 +50,23 @@ public class LoseGame : MonoBehaviour
         playerRigidBody.velocity = Vector3.zero;
     }
 
+    public static void KillPlayerByPrefab()
+    {
+        //obtener ultima posicion (ini si no hay)
+        Vector3 posSpawn = posIni;
+        if (lastCheckPoint != null) {
+            posSpawn = lastCheckPoint.GetPosition();
+        }
+
+        //crea nuevo jugador y elimina jugador actual
+        GameObject newPlayer = Instantiate(playerPrefab, posSpawn, Quaternion.Euler(new Vector3(0,-90, 0)));
+        Destroy(player);
+        player = newPlayer;
+        
+        //gravedad normal por defecto
+        gravityController.ChangeGravity(GravityController.Direction.Down);
+    }
+    
     public static void UpdateLastCheckPoint(CheckPoint newCheckPoint){
         if(lastCheckPoint != null)
             lastCheckPoint.TurnCheckPointLightOff();
