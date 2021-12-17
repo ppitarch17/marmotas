@@ -41,8 +41,8 @@ public class LoseGame : MonoBehaviour
         //Cambiar la gravedad Down
         gravityController.ChangeGravity(GravityController.Direction.Down);
         gravityController.resetRotation();
-        gravityController.resetRotation();
-        gravityController.setGravityColdDown(loseCoolDown);
+        //gravityController.resetRotation();
+        //gravityController.setGravityColdDown(loseCoolDown);
         //Poner velocidad a 0
         playerRigidBody.velocity = Vector3.zero;
     }
