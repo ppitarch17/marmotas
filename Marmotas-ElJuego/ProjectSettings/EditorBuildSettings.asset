@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CreandoNiveles.unity
     guid: b4dc45d505be0ec4ca33729259014490
+  - enabled: 1
+    path: Assets/Scenes/MenuVictoria.unity
+    guid: a74bf4e7eea85454584c962fac800df0
   m_configObjects: {}
