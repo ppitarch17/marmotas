@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class WinGame : MonoBehaviour
 {
@@ -56,5 +58,7 @@ public class WinGame : MonoBehaviour
 
     private void Win(){
         print("You won the gameeeee!!!");
+        LoseGame.KillPlayerByPrefab();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
