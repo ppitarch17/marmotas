@@ -20,7 +20,8 @@ public class KillPlayer : MonoBehaviour
         //print("ENTER COLLIDER COLLIDER ARROW: " + collision.gameObject.name);
 
         if(collision.gameObject.CompareTag("Player")){
-            LoseGame.KillPlayer();
+            //LoseGame.KillPlayer();
+            LoseGame.KillPlayerByPrefab();
         }
         
         if(destroyAfterTriggerEnter)

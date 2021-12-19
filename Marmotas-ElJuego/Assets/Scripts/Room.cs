@@ -25,8 +25,7 @@ public class Room  : MonoBehaviour
         {
             vCam.SetActive(false);
             if  (rb != null)
-
-            rb.useGravity = false;
+                rb.useGravity = false;
         }
     }
 }

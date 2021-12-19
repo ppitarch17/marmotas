@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
         //_isGrounded = Physics.CheckBox(transform.position, checkGroundBoxSize, Quaternion.identity, GroundLayer, QueryTriggerInteraction.Ignore);
 
         _inputs = HandleInputDependingOnDirection();
-
+        
+        
 
         if (_inputs != Vector3.zero && !gravityController.isRotating)
         {
@@ -140,5 +141,6 @@ public class PlayerController : MonoBehaviour
         // (AKA cuando hace spawn en un checkpoint)
         _body.velocity = new Vector3(0, _body.velocity.y, 0);
     }
+
 
 }
