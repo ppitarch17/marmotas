@@ -53,7 +53,8 @@ public class LoseGame : MonoBehaviour
     public static void KillPlayerByPrefab()
     {
         gravityController.ChangeGravity(GravityController.Direction.Down);
-        
+        FindObjectOfType<AudioManager>().Play("Muerte");
+
         //obtener ultima posicion (ini si no hay)
         Vector3 posSpawn = posIni;
         if (lastCheckPoint != null) {
@@ -67,7 +68,6 @@ public class LoseGame : MonoBehaviour
         gravityController = player.GetComponentInChildren<GravityController>();
         playerRigidBody = player.GetComponent<Rigidbody>();
         CamerasManager.updatePlayerReferenceOnVirtualCameras(player.transform);
-        //Las camaras no funcan bien si hacemos esto. Quien se encarga de determinar donde deben mirar las camaras?
     }
     
     public static void UpdateLastCheckPoint(CheckPoint newCheckPoint){

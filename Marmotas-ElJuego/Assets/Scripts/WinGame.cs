@@ -24,8 +24,12 @@ public class WinGame : MonoBehaviour
     }
 
     public void newOrbFound(){
+
+        FindObjectOfType<AudioManager>().Play("RecogeOrbe");
+
         orbsFound++;
         if(orbsFound >= orbsNedded){
+            FindObjectOfType<AudioManager>().Play("Win");
             Win();
         }
         
